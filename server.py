@@ -6,12 +6,6 @@ app = Flask(__name__)
 PORT = os.getenv('PORT', 8000)
 MONGO_URI = os.getenv('MONGO_URI')
 
-scores = {
-    'avi': 420,
-    'foo': 410,
-    'lol': 500,
-}
-
 client = MongoClient(MONGO_URI)
 db = client['hue-and-me']
 
