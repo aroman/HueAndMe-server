@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hue &amp; Me</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}">
+    <style>
+      body {
+        background-color: #211f1f;
+        font-family: azo-sans-uber, sans-serif;
+        margin: 0;
+        color: white;
+      }
+      a {
+        color: #777;
+        text-decoration: none;
+        transition: all 200ms ease-in-out;
+        font-family: 'Azo Sans';
+      }
+      a:active {
+        text-decoration: none;
+      }
+      a:visited {
+        color: #777;
+        /*color: #999;*/
+        text-decoration: none;
+      }
+      a:hover {
+        color: #ccc;
+      }
+      .Footer {
+        float: right;
+        margin-right: 15px;
+        margin-bottom: 10px;
+      }
+      .Container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-bottom: 50px;
+      }
+      .Logotype {
+        width: 80vw;
+        max-width: 500px;
+        margin-top: 10vh;
+        margin-bottom: 25px;
+      }
+      .Scores {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .Title {
+        font-size: 50px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+      }
+      .Score {
+        margin-bottom: 10px;
+        font-size: 25px;
+        text-align: center;
+      }
+      @media (max-width: 800px) {
+        .Score {
+          font-size: 20px;
+        }
+        .Footer {
+          position: inherit;
+        }
+      }
+      .Icon {
+        width: 200px;
+        margin-bottom: 25px;
+      }
+      .Badge {
+        width: 250px;
+      }
+    </style>
+    <script src="https://use.typekit.net/kxv4uvy.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
+  </head>
+  <body>
+    <div class="Container">
+      <img class="Logotype" src="{{ url_for('static', filename='logotype.svg') }}">
+      <img class="Badge" src="{{ url_for('static', filename='google-play-badge.png') }}"/>
+      <!-- <img class="Icon" src="{{ url_for('static', filename='logo.png') }}"/> -->
+      <div class="Title">scores</div>
+      <div class="Scores">
+        {% for score in scores %}
+          <div class="Score">#{{ loop.index }} {{ score.name }} ({{ score.points }} points)</div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="Footer">
+      <a href="https://avi.bio" target="_blank">built & designed by Avi</a>
+    </div>
+  </body>
+</html>
