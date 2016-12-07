@@ -7,8 +7,8 @@
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}">
     <style>
       body {
-        background-color: #211f1f;
-        font-family: azo-sans-uber, sans-serif;
+        background-color: #101010;
+        font-family: azo-sans-web, "Azo Sans", sans-serif;
         margin: 0;
         color: white;
       }
@@ -16,23 +16,20 @@
         color: #777;
         text-decoration: none;
         transition: all 200ms ease-in-out;
-        font-family: 'Azo Sans';
       }
       a:active {
         text-decoration: none;
       }
       a:visited {
         color: #777;
-        /*color: #999;*/
         text-decoration: none;
       }
       a:hover {
         color: #ccc;
       }
       .Footer {
-        float: right;
-        margin-right: 15px;
-        margin-bottom: 10px;
+        font-size: 24px;
+        margin-top: 50px;
       }
       .Container {
         display: flex;
@@ -45,7 +42,6 @@
         width: 80vw;
         max-width: 500px;
         margin-top: 10vh;
-        margin-bottom: 25px;
       }
       .Scores {
         display: flex;
@@ -55,8 +51,8 @@
       }
       .Title {
         font-size: 50px;
+        margin-top: 30px;
         margin-bottom: 20px;
-        margin-top: 20px;
       }
       .Score {
         margin-bottom: 10px;
@@ -66,9 +62,6 @@
       @media (max-width: 800px) {
         .Score {
           font-size: 20px;
-        }
-        .Footer {
-          position: inherit;
         }
       }
       .Icon {
@@ -85,17 +78,19 @@
   <body>
     <div class="Container">
       <img class="Logotype" src="{{ url_for('static', filename='logotype.svg') }}">
-      <img class="Badge" src="{{ url_for('static', filename='google-play-badge.png') }}"/>
-      <!-- <img class="Icon" src="{{ url_for('static', filename='logo.png') }}"/> -->
-      <div class="Title">scores</div>
+      <div class="Title">Download</div>
+      <a href="https://goo.gl/forms/2fnj1HRvuhbre1PX2" target="_blank">
+        <img class="Badge" src="{{ url_for('static', filename='google-play-badge.png') }}"/>
+      </a>
+      <div class="Title">Top Players</div>
       <div class="Scores">
         {% for score in scores %}
-          <div class="Score">#{{ loop.index }} {{ score.name }} ({{ score.points }} points)</div>
+          <div class="Score">#{{ loop.index }} {{ score.name|capitalize }} ({{ score.points }} points)</div>
         {% endfor %}
       </div>
-    </div>
-    <div class="Footer">
-      <a href="https://avi.bio" target="_blank">built & designed by Avi</a>
+      <div class="Footer">
+        <a href="https://avi.bio" target="_blank">built &amp; designed by Avi</a>
+      </div>
     </div>
   </body>
 </html>
